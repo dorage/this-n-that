@@ -109,7 +109,7 @@ const isKorean = (charCode: number) => {
   return isComponent(charCode) || isWord(charCode);
 };
 
-const getComponents = (charCode: number) => {
+const getComponent = (charCode: number) => {
   if (isComponent(charCode)) return {};
 };
 
