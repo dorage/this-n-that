@@ -2,6 +2,10 @@ import path from "path";
 import { loaders } from "./libs/loaders";
 import { FindFileCondition, deepReplace, findFilePath } from "./libs/utils";
 
+// TODO: add generate function
+// TODO: deploy on npm
+// TODO: mutations
+
 type SchemaObject<T extends { [key: string]: any }> = {
   [K in keyof T]: SchemaNode<T[K]> | SchemaObject<T[K]>;
 };
