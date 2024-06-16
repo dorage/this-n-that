@@ -7,9 +7,14 @@ export const diffArray = (arr1: any[], arr2: any[]): boolean => {
   return true;
 };
 
-export const diffObject = <T1 extends object, T2 extends object>(
+export const isEqualObject = <T1 extends object, T2 extends object>(
   obj1: T1,
   obj2: T2,
 ): boolean => {
-  return _.isEqual(obj1, obj2);
+  return _.isEqualWith(obj1, obj2, (a, b) => {
+    if (typeof a === "function" || typeof b === "function") {
+      return typeof a === "function" && typeof b === "function";
+    }
+    return undefined;
+  });
 };
