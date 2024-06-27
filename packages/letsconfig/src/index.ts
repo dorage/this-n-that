@@ -4,44 +4,6 @@ import { FindFileCondition, deepReplace, findFilePath } from "./libs/utils";
 
 // TODO: add generate function
 // TODO: deploy on npm
-// TODO: mutations
-
-type SchemaObject<T extends { [key: string]: any }> = {
-  [K in keyof T]: SchemaNode<T[K]> | SchemaObject<T[K]>;
-};
-
-type SchemaNode<T> = {
-  default: T;
-  generation?: string;
-  description?: string;
-  mutation?: {
-    [mutationKey: string]: (value: T) => T;
-  };
-};
-
-const d = Symbol("d");
-
-const schema: SchemaObject<{
-  name: string;
-  age: number;
-  job: { name: string; salary: number };
-}> = {
-  name: {
-    default: "dorage lee",
-    mutation: {
-      lastName: (v) => v.split(" ")[0],
-    },
-  },
-  age: { default: 28, mutation: { add: (v) => v + 1 } },
-  job: { name: { default: "programmer" }, salary: { default: 2 } },
-};
-
-const schemaProxy = new Proxy(schema, {
-  get(obj, key) {
-    const v = obj[key as keyof typeof obj];
-    if (v == null) return v;
-  },
-});
 
 export type UseConfOptions<Schema> = {
   schema: Schema;
