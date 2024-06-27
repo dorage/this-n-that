@@ -76,35 +76,37 @@ describe("load config.ts", () => {
     expect(isEqualObject(letsconf.config, defaultConfig)).toEqual(true);
   });
 
-  test("fully broken config must parsed successfully", async () => {
-    // TODO: error 처리
-    const letsconf = LetsConfig.Load<DefaultConfig>({
-      file: "./test/configs/loader/fully-broken.config.ts",
-      schema: defaultConfig,
-      validator: (obj) => {
-        return zDefaultConfig.parse(obj);
-      },
-    });
+  test("fully broken config must failed", async () => {
+    // validation is the responsibility of the user
+    try {
+      const letsconf = LetsConfig.Load<DefaultConfig>({
+        file: "./test/configs/loader/fully-broken.config.ts",
+        schema: defaultConfig,
+        validator: (obj) => {
+          return zDefaultConfig.parse(obj);
+        },
+      });
 
-    expect(zDefaultConfig.strict().safeParse(letsconf.config).success).toEqual(
-      true,
-    );
-    expect(isEqualObject(letsconf.config, defaultConfig)).toEqual(true);
+      expect(false).toEqual(true);
+    } catch (err) {
+      expect(true).toEqual(true);
+    }
   });
 
-  test("partially broken config must parsed successfully", async () => {
-    // TODO: error 처리
-    const letsconf = LetsConfig.Load<DefaultConfig>({
-      file: "./test/configs/loader/partially-broken.config.ts",
-      schema: defaultConfig,
-      validator: (obj) => {
-        return zDefaultConfig.parse(obj);
-      },
-    });
+  test("partially broken config must failed", async () => {
+    try {
+      // validation is the responsibility of the user
+      const letsconf = LetsConfig.Load<DefaultConfig>({
+        file: "./test/configs/loader/partially-broken.config.ts",
+        schema: defaultConfig,
+        validator: (obj) => {
+          return zDefaultConfig.parse(obj);
+        },
+      });
 
-    expect(zDefaultConfig.strict().safeParse(letsconf.config).success).toEqual(
-      true,
-    );
-    expect(isEqualObject(letsconf.config, defaultConfig)).toEqual(true);
+      expect(false).toEqual(true);
+    } catch (err) {
+      expect(true).toEqual(true);
+    }
   });
 });
