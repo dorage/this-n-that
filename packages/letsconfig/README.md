@@ -4,14 +4,13 @@ Load config file (.ts) & Return type-safe object.
 
 ## Features
 
-⚡ load configuration fast
-🎓 stop configure configuration 
-📦 cute size
+⚡ load configuration 
+🎓 stop configure configuration
 
 ## Installation
 
 ``` bash
-pnpm add lets
+pnpm add letsconfig
 ```
 
 ## Cookbooks
