@@ -24,4 +24,5 @@ node_modules
 test
 
 # config files
-*.config.*
+*.config.js
+*.config.ts

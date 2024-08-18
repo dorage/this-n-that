@@ -1,4 +1,7 @@
 {
   "name": "this-n-that",
-  "author": "https://github.com/dorage"
+  "author": "https://github.com/dorage",
+  "devDependencies": {
+    "nx": "^19.5.7"
+  }
 }

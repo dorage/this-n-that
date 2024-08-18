@@ -56,6 +56,10 @@ export class LetsConfig<Schema extends object> {
     return this;
   }
 
+  public generate(opts: { filepath: string; filetypes: string }) {
+    // TODO: generate file
+  }
+
   // ------------------------------------------------------------
   // private method declarations
   // ------------------------------------------------------------

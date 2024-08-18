@@ -1,5 +1,7 @@
 # LetsConfig
 
+> 🚧 It is under development. 🚧
+
 Load config file (.ts) & Return type-safe object.
 
 ## Features
