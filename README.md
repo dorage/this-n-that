@@ -4,17 +4,15 @@
 
 ``` 
 this-n-that/
-├─ npm/               // npm packages
-├─ lib/               // internal packages
+├─ libs/               // packages
 ```
 
 ### NPM
 
-- [**letsconfig**](/npm/letsconfig/README.md)
+- [**letsconfig**](/libs/letsconfig/README.md)
 > 🚧 It is under development. 🚧
 
-- [**letstyping**](/npm/letstyping/README.md)
+- [**letstyping**](/libs/letstyping/README.md)
 > 🚧 It is under development. 🚧
 
-### PS-PLUGINS
 
