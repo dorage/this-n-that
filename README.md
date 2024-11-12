@@ -9,10 +9,10 @@ this-n-that/
 
 ### NPM
 
-- [**letsconfig**](/libs/letsconfig/README.md)
+- [**letsconfig**](/apps/letsconfig/README.md)
 > 🚧 It is under development. 🚧
 
-- [**letstyping**](/libs/letstyping/README.md)
+- [**letstyping**](/apps/letstyping/README.md)
 > 🚧 It is under development. 🚧
 
 
