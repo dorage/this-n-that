@@ -15,4 +15,6 @@ this-n-that/
 - [**letstyping**](/apps/letstyping/README.md)
 > 🚧 It is under development. 🚧
 
+- [**letstemplate**](/apps/letstemplate/README.md)
+> 🚧 It is under development. 🚧
 
