@@ -21,3 +21,19 @@ test("must type expectedly", async () => {
     i++;
   });
 });
+
+test("must work expectedly", async () => {
+  const source = "abc012";
+  const expectIsLastCharacter = [false, false, false, false, false, true];
+  const expectIsLastComponent = [true, true, true, true, true, true];
+
+  const typing = new LetsTyping();
+
+  let i = 0;
+
+  typing.type(source, (output, { isLastCharacter, isLastComponent }) => {
+    expect(isLastComponent === expectIsLastComponent[i]).toEqual(true);
+    expect(isLastCharacter === expectIsLastCharacter[i]).toEqual(true);
+    i++;
+  });
+});
