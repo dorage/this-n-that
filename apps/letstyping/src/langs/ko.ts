@@ -1,4 +1,5 @@
 import { KEY_SWITCH } from "../constants/sfx";
+import { createLanguage } from "../types/language";
 
 // 자음 등장 순
 const upperConsonants = [
@@ -143,12 +144,12 @@ const getComponent = (charCode: number) => {
 
 const getSound = (componentCharCode: number) => {};
 
-export default {
+export default createLanguage({
   condition: (char: string) => {
     const charCode = char.charCodeAt(0);
     return isKorean(charCode);
   },
-  destruct: (char: string) => {
+  disassemble: (char: string) => {
     const charCode = char.charCodeAt(0);
 
     if (isComponent(charCode)) {
@@ -185,4 +186,4 @@ export default {
     result.push(String.fromCharCode(가 + vowel * 28 + upper * 28 * 21 + lower));
     return result;
   },
-};
+});
