@@ -17,12 +17,13 @@ pnpm add letsmigrate-kysely
 ## Cookbooks
 
 ``` typescript
-type('Hello World', { gap: { min: 100, max: 200 }});
+type('Hello World', ({ output, isComponent, isWord, timer})=>{
+
+});
 ```
 
 ## Roadmaps
 
 - [] Add: Korean - values in 'componentSwitches'
-- [] Add: English
 - [] Add: UI Testing
 - [] Add: npm deploy script
