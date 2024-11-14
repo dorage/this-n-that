@@ -2,10 +2,6 @@
 
 Realistic simulation of keyboard typing
 
-## Supported Languages
-
-- [v] english
-- [v] korean
 
 ## Features
 
@@ -65,10 +61,13 @@ const letsTyping = new LetsTyping({
 
 ```
 
+## Supported Languages
+
+- [v] english
+- [v] korean
+
 ## Roadmaps
 
-- [v] korean
-- [v] english
 - [] publish to npm 
 - [] keymap mapping for sound
 
