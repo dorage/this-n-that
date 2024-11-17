@@ -37,3 +37,19 @@ test("must work expectedly", async () => {
     i++;
   });
 });
+
+describe("korean test", () => {
+  test("must work expectedly", async () => {
+    const source = "닭발";
+    const expectedOutputs = ["ㄷ", "다", "달", "닭", "닭ㅂ", "닭바", "닭발"];
+
+    const typing = new LetsTyping();
+
+    let i = 0;
+
+    typing.type(source, (output) => {
+      expect(output === expectedOutputs[i]).toEqual(true);
+      i++;
+    });
+  });
+});
