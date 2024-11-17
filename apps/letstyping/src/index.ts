@@ -52,10 +52,15 @@ export class LetsTyping {
         timer: typeof timer;
       },
     ) => Promise<unknown> | unknown,
+    opts?: {
+      beforeStart: () => void | Promise<void>;
+      afterEnd: () => void | Promise<void>;
+    },
   ) {
     let output = "";
     const characters = this.disassemble(source);
 
+    if (opts?.beforeStart) opts.beforeStart();
     for (let i = 0; i < characters.length; i++) {
       const components = characters[i];
       for (let j = 0; j < components.length; j++) {
@@ -69,5 +74,6 @@ export class LetsTyping {
       }
       output += components[components.length - 1];
     }
+    if (opts?.afterEnd) opts.afterEnd();
   }
 }
