@@ -20,14 +20,25 @@ pnpm add letstyping
 ### Simple Usage
 
 ``` typescript
+import { LetsTyping } from 'letstyping';
+
 const letsTyping = new LetsTyping();
 
 letsTyping.type("닭발", (output, { timer, isLastCharacter, isLastComponent  }) => {
   console.log(output)   
   if(isLastComponent) timer(200)
   if(isLastCharacter) timer(400)
+}, {
+  beforeStart: () => {
+    console.log('start typing')
+  },
+  afterEnd: () => {
+    console.log('end typing')
+  }
 });
-// it would work expectedely like below
+// expected output
+//
+// start typing
 // ㄷ (200ms)
 // 다 (200ms)
 // 달 (200ms)
@@ -35,15 +46,16 @@ letsTyping.type("닭발", (output, { timer, isLastCharacter, isLastComponent  })
 // 닭ㅂ (200ms)
 // 닭바 (200ms)
 // 닭발 (400ms)
+// end typing
 
 ```
 
 ### Extend language
 
 ``` typescript
-import LetsTyping, { Languages } from 'letstyping';
+import LetsTyping, { createLanguage, Languages } from 'letstyping';
 
-const number = {
+const numberToSpecial = createLanguage({
   condition: (char: string) => {
     if(char === '!') return true;
     return false;
@@ -51,10 +63,10 @@ const number = {
   disassemble: (char: string) => {
     return ['1', '!'];
   }
-}
+})
 
 const letsTyping = new LetsTyping({
-  langs: [ number ], // default *[ Languages.en, Languages.ko, ...(language extensions), Languages.fallback ]*
+  langs: [ Languages.ko ,numberToSpecial ], // default *[ Languages.en, Languages.ko, ...(language extensions), Languages.fallback ]*
   defaultLang: false, // default *true*, only Languages.fallback would be added.
 });
 
@@ -68,6 +80,6 @@ const letsTyping = new LetsTyping({
 
 ## Roadmaps
 
-- [] publish to npm 
+- [v] publish to npm 
 - [] keymap mapping for sound
 
