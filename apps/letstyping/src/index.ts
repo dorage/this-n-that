@@ -53,8 +53,8 @@ export class LetsTyping {
       },
     ) => Promise<unknown> | unknown,
     opts?: {
-      beforeStart: () => void | Promise<void>;
-      afterEnd: () => void | Promise<void>;
+      beforeStart?: () => Promise<unknown> | unknown;
+      afterEnd?: () => Promise<unknown> | unknown;
     },
   ) {
     let output = "";
