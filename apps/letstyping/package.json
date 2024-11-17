@@ -14,7 +14,8 @@
   "types": "dist/src/index.d.ts",
   "scripts": {
     "test": "pnpm jest",
-    "build": "rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "publish": "pnpm build && npm publish"
   },
   "author": "dorage",
   "license": "ISC",
