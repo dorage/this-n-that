@@ -1,14 +1,18 @@
 {
   "name": "letstyping",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "version": "0.0.1",
+  "description": "Realistic simulation of keyboard typing",
+  "keywords": [
+    "keyboard",
+    "typing",
+    "animation"
+  ],
+  "homepage": "https://github.com/dorage/this-n-that/tree/main/apps/letstyping",
   "type": "module",
   "scripts": {
     "test": "pnpm jest"
   },
-  "keywords": [],
-  "author": "",
+  "author": "dorage",
   "license": "ISC",
   "dependencies": {
     "tsx": "^4.15.2",
