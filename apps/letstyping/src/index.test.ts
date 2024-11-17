@@ -38,6 +38,29 @@ test("must work expectedly", async () => {
   });
 });
 
+test("flag callback test", async () => {
+  const source = "닭발";
+
+  const typing = new LetsTyping();
+
+  let beforeStart = false;
+  let afterEnd = false;
+
+  await typing.type(
+    source,
+    (output, { isLastCharacter, isLastComponent }) => {},
+    {
+      beforeStart() {
+        beforeStart = true;
+      },
+      afterEnd() {
+        afterEnd = true;
+      },
+    },
+  );
+  expect(beforeStart && afterEnd).toEqual(true);
+});
+
 describe("korean test", () => {
   test("must work expectedly", async () => {
     const source = "닭발";
