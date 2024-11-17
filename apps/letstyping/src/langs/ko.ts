@@ -1,5 +1,7 @@
 import { KEY_SWITCH } from "../constants/sfx";
+import { createLanguage } from "../types/language";
 
+// 자음 등장 순
 const upperConsonants = [
   "ㄱ",
   "ㄲ",
@@ -22,34 +24,61 @@ const upperConsonants = [
   "ㅎ",
 ];
 
+// 모음 중 합성되는 경우
+const vowels = [
+  0, // 가
+  0, // 개
+  0, // 갸
+  0, // 걔
+  0, // 거
+  0, // 게
+  0, // 겨
+  0, // 계
+  0, // 고
+  1, // 과
+  2, // 괘
+  3, // 괴
+  0, // 교
+  0, // 구
+  1, // 궈
+  2, // 궤
+  3, // 귀
+  0, // 규
+  0, // 그
+  1, // 긔
+  0, // 기
+];
+
+// 아랫자음 중 합성되는 경우
 const lowerConsonants = [
-  "ㄱ",
-  "ㄲ",
-  "ㄳ",
-  "ㄴ",
-  "ㄵ",
-  "ㄶ",
-  "ㄷ",
-  "ㄹ",
-  "ㄺ",
-  "ㄻ",
-  "ㄼ",
-  "ㄽ",
-  "ㄾ",
-  "ㄿ",
-  "ㅀ",
-  "ㅁ",
-  "ㅂ",
-  "ㅄ",
-  "ㅅ",
-  "ㅆ",
-  "ㅇ",
-  "ㅈ",
-  "ㅊ",
-  "ㅋ",
-  "ㅌ",
-  "ㅍ",
-  "ㅎ",
+  0, //  "",
+  0, //  "ㄱ",
+  0, //  "ㄲ",
+  2, //  "ㄳ",
+  0, //  "ㄴ",
+  1, //  "ㄵ",
+  2, //  "ㄶ",
+  0, //  "ㄷ",
+  0, //  "ㄹ",
+  1, //  "ㄺ",
+  2, //  "ㄻ",
+  3, //  "ㄼ",
+  4, //  "ㄽ",
+  5, //  "ㄾ",
+  6, //  "ㄿ",
+  7, //  "ㅀ",
+  0, //  "ㅁ",
+  0, //  "ㅂ",
+  1, //  "ㅄ",
+  0, //  "ㅅ",
+  0, //  "ㅆ",
+  0, //  "ㅇ",
+  0, //  "ㅈ",
+  0, //  "ㅊ",
+  0, //  "ㅋ",
+  0, //  "ㅌ",
+  0, //  "ㅍ",
+  0, //  "ㅎ",
 ];
 
 const componentSwitches = {
@@ -115,25 +144,46 @@ const getComponent = (charCode: number) => {
 
 const getSound = (componentCharCode: number) => {};
 
-export default {
+export default createLanguage({
   condition: (char: string) => {
     const charCode = char.charCodeAt(0);
     return isKorean(charCode);
   },
-  destruct: (char: string) => {
+  disassemble: (char: string) => {
     const charCode = char.charCodeAt(0);
 
     if (isComponent(charCode)) {
-      return [{ value: char, sfx: [] }];
+      return [char];
     }
 
-    const consonant = Math.floor((charCode - 가) / (28 * 21));
-    const vowel = Math.floor((charCode - 가 - consonant * 28 * 21) / 28);
+    const result: string[] = [];
 
-    return [
-      upperConsonants[consonant],
-      String.fromCharCode(가 + vowel * 28 + consonant * 28 * 21),
-      char,
-    ];
+    // upper consonant
+    const upper = Math.floor((charCode - 가) / (28 * 21));
+    result.push(upperConsonants[upper]);
+
+    // upper consonant + lower consonant
+    const vowel = Math.floor((charCode - 가 - upper * 28 * 21) / 28);
+    if (vowels[vowel] !== 0) {
+      result.push(
+        String.fromCharCode(
+          가 + (vowel - vowels[vowel]) * 28 + upper * 28 * 21,
+        ),
+      );
+    }
+    result.push(String.fromCharCode(가 + vowel * 28 + upper * 28 * 21));
+    if (result[result.length - 1] === char) return result;
+
+    // upper consonant + lower consonant
+    const lower = (charCode - 가 - upper * 28 * 21) % 28;
+    if (lowerConsonants[lower] !== 0) {
+      result.push(
+        String.fromCharCode(
+          가 + vowel * 28 + upper * 28 * 21 + lower - lowerConsonants[lower],
+        ),
+      );
+    }
+    result.push(String.fromCharCode(가 + vowel * 28 + upper * 28 * 21 + lower));
+    return result;
   },
-};
+});

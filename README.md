@@ -4,7 +4,7 @@
 
 ``` 
 this-n-that/
-├─ libs/               // packages
+├─ apps/               // npm packages
 ```
 
 ### NPM
@@ -13,7 +13,8 @@ this-n-that/
 > 🚧 It is under development. 🚧
 
 - [**letstyping**](/apps/letstyping/README.md)
-> 🚧 It is under development. 🚧
+
+Realistic simulation of keyboard typing
 
 - [**letstemplate**](/apps/letstemplate/README.md)
 > 🚧 It is under development. 🚧
