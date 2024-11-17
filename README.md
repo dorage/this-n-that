@@ -13,6 +13,7 @@ this-n-that/
 > 🚧 It is under development. 🚧
 
 - [**letstyping**](/apps/letstyping/README.md)
-> 🚧 It is under development. 🚧
+
+Realistic simulation of keyboard typing
 
 
