@@ -1,4 +1,4 @@
-import LetsTyping from ".";
+import { LetsTyping } from ".";
 
 test("must disassemble expectedly", async () => {
   const source = "abc012";

@@ -1,4 +1,4 @@
-import { Language } from "./types/language";
+import { createLanguage as _createLanguage, Language } from "./types/language";
 
 import ko from "./langs/ko";
 import en from "./langs/en";
@@ -10,7 +10,9 @@ export const Languages = {
   en,
 };
 
-class LetsTyping {
+export const createLanguage = _createLanguage;
+
+export class LetsTyping {
   languages = [ko];
 
   constructor(opts?: { langs?: Language[]; defaultLang?: boolean }) {
@@ -69,5 +71,3 @@ class LetsTyping {
     }
   }
 }
-
-export default LetsTyping;
