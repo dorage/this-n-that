@@ -2,12 +2,13 @@
 
 > 🚧 It is under development. 🚧
 
-file template for CLI
+File/Folder structure template, works like Luasnip for CLI
 
 ## Features
 
 ⚡ Simple to use
-Generate template automatically
+📋 Copy template files like snippet
+🔤 Programmable templates
 
 ## Installation
 
