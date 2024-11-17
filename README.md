@@ -4,7 +4,7 @@
 
 ``` 
 this-n-that/
-├─ libs/               // packages
+├─ apps/               // npm packages
 ```
 
 ### NPM
